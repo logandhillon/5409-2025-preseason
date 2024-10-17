@@ -9,7 +9,7 @@ import frc.robot.LimelightHelpers;
 
 public class Vision extends SubsystemBase {
     private static Vision instance = null;
-    private String limelightName = Constants.Vision.LIMELIGHT_NAME;
+    private String limelightName = Constants.kVision.LIMELIGHT_NAME;
 
     private Vision() {
     }
