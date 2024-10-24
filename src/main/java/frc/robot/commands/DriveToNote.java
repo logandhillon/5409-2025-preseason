@@ -20,15 +20,11 @@ public class DriveToNote extends Command {
     private final Intake sys_intake;
     private final Indexer sys_indexer;
 
-    private final Command cmd_intake;
-
     public DriveToNote(Vision vision, Drivetrain drivetrain, Intake intake, Indexer indexer) {
         sys_vision = vision;
         sys_drivetrain = drivetrain;
         sys_intake = intake;
         sys_indexer = indexer;
-
-        cmd_intake = new IntakeNote(sys_intake, sys_indexer);
 
         addRequirements(sys_vision, sys_drivetrain, sys_intake, sys_indexer);
     }
@@ -50,7 +46,6 @@ public class DriveToNote extends Command {
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        cmd_intake.schedule();
     }
 
     // Returns true when the command should end.

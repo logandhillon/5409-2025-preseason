@@ -59,8 +59,13 @@ public class RobotContainer {
             sys_intake.setVoltage(0);
         }, sys_intake));
 
-        // drive to note
-        m_driverController.y().onTrue(new DriveToNote(sys_vision, sys_drivetrain, sys_intake, sys_indexer));
+        // drive to and intake note
+        m_driverController.y().onTrue(new DriveToNote(sys_vision, sys_drivetrain, sys_intake, sys_indexer)
+                .andThen(Commands.race(Commands.run(() -> {
+                    sys_drivetrain.moveWithVelocity(() -> kDrive.NOTE_LOCATOR_MOVEMENT_RATE, () -> 0.0,
+                            () -> kDrive.MAX_TURN_ANGULAR_VELOCITY);
+                }, sys_drivetrain)), Commands.waitUntil(() -> sys_vision.getTargetArea() == 0))
+                .andThen(new IntakeNote(sys_intake, sys_indexer)));
     }
 
     public Command getAutonomousCommand() {
