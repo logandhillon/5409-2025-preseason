@@ -17,19 +17,19 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-  public static class OperatorConstants {
-    public static final int kDriverControllerPort = 0;
-  }
+    public static class OperatorConstants {
+        public static final int kDriverControllerPort = 0;
+    }
 
-  public static final class kVision {
-    public static final String LIMELIGHT_NAME = "limelight";
-    public static final double LOCATOR_TOLERANCE = 25.0;
-  }
+    public static final class kVision {
+        public static final String LIMELIGHT_NAME = "limelight";
+        public static final double LOCATOR_TOLERANCE = 25.0;
+    }
 
-  public static final class kDrive {
-    public static final double CURRENT_LIMIT = 150.0;
+    public static final class kDrive {
+        public static final double CURRENT_LIMIT = 150.0;
 
-    public static final double MAX_DRIVE_VELOCIY = 4.56;
-    public static final double MAX_TURN_ANGULAR_VELOCITY = 10 / 2;
-  }
+        public static final double MAX_DRIVE_VELOCIY = 4.56;
+        public static final double MAX_TURN_ANGULAR_VELOCITY = 10 / 2;
+    }
 }
