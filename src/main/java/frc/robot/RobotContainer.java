@@ -4,15 +4,25 @@
 
 package frc.robot;
 
+import javax.swing.text.StyledEditorKit.ForegroundAction;
+
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.Constants.kDrive;
 import frc.robot.commands.DriveToNote;
+import frc.robot.commands.IntakeNote;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Indexer;
+import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Vision;
 
 public class RobotContainer {
+    private final Vision sys_vision = Vision.getInstance();
     private final Drivetrain sys_drivetrain = Drivetrain.getInstance();
+    private final Intake sys_intake = Intake.getInstance();
+    private final Indexer sys_indexer = Indexer.getInstance();
 
     private Command cmd_teleopDrive;
 
@@ -39,7 +49,18 @@ public class RobotContainer {
 
         sys_drivetrain.setDefaultCommand(cmd_teleopDrive);
 
-        m_driverController.y().onTrue(new DriveToNote());
+        // intake note command
+        m_driverController.x().whileTrue(new IntakeNote(sys_intake, sys_indexer));
+
+        // eject note command
+        m_driverController.b().onTrue(Commands.runOnce(() -> {
+            sys_intake.setVoltage(-12.0);
+        }, sys_intake)).onFalse(Commands.runOnce(() -> {
+            sys_intake.setVoltage(0);
+        }, sys_intake));
+
+        // drive to note
+        m_driverController.y().onTrue(new DriveToNote(sys_vision, sys_drivetrain, sys_intake, sys_indexer));
     }
 
     public Command getAutonomousCommand() {

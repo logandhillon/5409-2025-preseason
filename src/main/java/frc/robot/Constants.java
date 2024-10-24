@@ -32,4 +32,20 @@ public final class Constants {
         public static final double MAX_DRIVE_VELOCIY = 4.56;
         public static final double MAX_TURN_ANGULAR_VELOCITY = 10 / 2;
     }
+
+    public static final class kIntake {
+        public static final int MOTOR_ID = 0; // placeholder; set to ID of intake motor
+        public static final int IR_CHANNEL = 2;
+        public static final int CURRENT_LIMIT = 40;
+        public static final double VOLTAGE = 7;
+    }
+
+    public static final class kIndexer {
+        public static final int MOTOR_ID = 0; // placeholder; set to ID of indexer motor
+        public static final int CURRENT_LIMIT = 30;
+        public static final int IR_SENSOR_PORT = 0;
+        public static final double VOLTAGE = 8;
+
+
+    }
 }
