@@ -42,7 +42,8 @@ public class DriveToNote extends Command {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        sys_drivetrain.moveWithVelocity(() -> sys_vision.getTargetXOffset(), () -> sys_vision.getTargetYOffset(),
+        sys_drivetrain.moveWithVelocity(() -> sys_vision.getTargetXOffset() * kDrive.NOTE_LOCATOR_MOVEMENT_RATE,
+                () -> sys_vision.getTargetYOffset() * kDrive.NOTE_LOCATOR_MOVEMENT_RATE,
                 () -> kDrive.MAX_TURN_ANGULAR_VELOCITY);
     }
 

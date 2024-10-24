@@ -31,6 +31,8 @@ public final class Constants {
 
         public static final double MAX_DRIVE_VELOCIY = 4.56;
         public static final double MAX_TURN_ANGULAR_VELOCITY = 10 / 2;
+
+        public static final double NOTE_LOCATOR_MOVEMENT_RATE = 0.5;
     }
 
     public static final class kIntake {
