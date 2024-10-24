@@ -1,7 +1,5 @@
 package frc.robot.commands;
 
-import java.util.function.ToDoubleBiFunction;
-
 // 5409: The Chargers
 // http://github.com/FRC5409
 
